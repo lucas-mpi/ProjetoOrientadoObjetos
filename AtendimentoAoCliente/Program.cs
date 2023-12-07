@@ -11,7 +11,6 @@ namespace AtendimentoAoCliente
             MenuPrincipal();
 
 
-
             void MenuPrincipal()
             {
                 bool operacaoBemSucedida = false;
@@ -40,7 +39,8 @@ namespace AtendimentoAoCliente
 
                             case 2:
                                 Console.Clear();
-                                MenuSuporte();
+                                LoginUsuario();
+                                //MenuSuporte();
                                 break;
 
                             case 0:
@@ -140,7 +140,7 @@ namespace AtendimentoAoCliente
 
                 UsuariosUI usuarioUI = new();
 
-                var confirmaUsuario = usuarioUI.VerificaUsuario(usuario, senha);
+                bool confirmaUsuario = usuarioUI.VerificaUsuario(usuario, senha);
 
 
                 if (confirmaUsuario == true)
@@ -358,13 +358,13 @@ namespace AtendimentoAoCliente
 
                         int opcaoTipoUsuario;
 
-                        Console.WriteLine("Painel Setores");
+                        Console.WriteLine("Painel Tipos de Usuários");
                         Console.WriteLine();
                         Console.WriteLine("Informe uma opção:");
-                        Console.WriteLine("1 - Cadastrar Setor");
-                        Console.WriteLine("2 - Listar Setor");
-                        Console.WriteLine("3 - Editar Setor");
-                        Console.WriteLine("4 - Excluir Setor");
+                        Console.WriteLine("1 - Cadastrar Tipo");
+                        Console.WriteLine("2 - Listar Tipo");
+                        Console.WriteLine("3 - Editar Tipo");
+                        Console.WriteLine("4 - Excluir Tipo");
                         Console.WriteLine("0 - Retornar Ao Menu Anterior");
 
                         opcaoTipoUsuario = int.Parse(Console.ReadLine());
