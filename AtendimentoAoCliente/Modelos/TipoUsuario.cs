@@ -15,6 +15,9 @@ namespace AtendimentoAoCliente.Modelos
         public int TipoUsuarioId { get; set; }
         public string Descricao { get; set;  }
 
+        ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
+
+
         public TipoUsuario(string descricao)
         {
             Descricao = descricao;

@@ -29,6 +29,14 @@ namespace AtendimentoAoCliente.Repositorio
             _context.SaveChanges(); 
         }
 
+        public void DeletarCliente(int id)
+        {
+            var cliente = _context.Clientes.Find(id);
+            
+            _context.Clientes.Remove(cliente);
+
+            _context.SaveChanges();
+        }
     }
 
     

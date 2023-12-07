@@ -3,6 +3,7 @@ using System;
 using AtendimentoAoCliente.Contextos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AtendimentoAoCliente.Migrations
 {
     [DbContext(typeof(AtendimentoDbContext))]
-    partial class AtendimentoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231206213106_teste")]
+    partial class teste
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.0");
@@ -51,10 +53,10 @@ namespace AtendimentoAoCliente.Migrations
                     b.Property<DateTime?>("UltimaAtualizacao")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("UsuarioId")
+                    b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("UsuariosUsuarioId")
+                    b.Property<int>("UsuariosUsuarioId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("AtendimentoId");
@@ -65,7 +67,7 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasIndex("UsuariosUsuarioId");
 
-                    b.ToTable("Atendimentos", (string)null);
+                    b.ToTable("Atendimentos");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.Clientes", b =>
@@ -92,7 +94,7 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasKey("ClienteId");
 
-                    b.ToTable("Clientes", (string)null);
+                    b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.Setores", b =>
@@ -107,7 +109,7 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasKey("SetorId");
 
-                    b.ToTable("Setores", (string)null);
+                    b.ToTable("Setores");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.TipoUsuario", b =>
@@ -122,7 +124,7 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasKey("TipoUsuarioId");
 
-                    b.ToTable("TipoUsuarios", (string)null);
+                    b.ToTable("TipoUsuarios");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.Usuarios", b =>
@@ -154,7 +156,7 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasKey("UsuarioId");
 
-                    b.ToTable("Usuarios", (string)null);
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.Atendimentos", b =>
@@ -173,7 +175,9 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasOne("AtendimentoAoCliente.Modelos.Usuarios", "Usuarios")
                         .WithMany("Atendimentos")
-                        .HasForeignKey("UsuariosUsuarioId");
+                        .HasForeignKey("UsuariosUsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Clientes");
 

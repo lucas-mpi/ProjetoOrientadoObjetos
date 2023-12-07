@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AtendimentoAoCliente.Migrations
 {
     [DbContext(typeof(AtendimentoDbContext))]
-    [Migration("20231206035911_inicial")]
-    partial class inicial
+    [Migration("20231206231851_Atualizando_campoUsuarios_podeSerNull")]
+    partial class Atualizando_campoUsuarios_podeSerNull
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,13 +25,10 @@ namespace AtendimentoAoCliente.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("AreaAtendimentoSetorId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("AtendenteUsuarioId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("ClienteId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ClientesClienteId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ComentarioAtendente")
@@ -44,19 +41,31 @@ namespace AtendimentoAoCliente.Migrations
                     b.Property<DateTime>("DataSolicitacao")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("SetorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SetoresSetorId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("StatusAtendimento")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UltimaAtualizacao")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("UsuariosUsuarioId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("AtendimentoId");
 
-                    b.HasIndex("AreaAtendimentoSetorId");
+                    b.HasIndex("ClientesClienteId");
 
-                    b.HasIndex("AtendenteUsuarioId");
+                    b.HasIndex("SetoresSetorId");
 
-                    b.HasIndex("ClienteId");
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("Atendimentos");
                 });
@@ -124,9 +133,6 @@ namespace AtendimentoAoCliente.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CategoriaTipoUsuarioId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("NomeCompleto")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -139,7 +145,10 @@ namespace AtendimentoAoCliente.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SetorUsuarioSetorId")
+                    b.Property<int>("SetorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TipoUsuarioId")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("UsuarioAtivo")
@@ -147,55 +156,42 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasKey("UsuarioId");
 
-                    b.HasIndex("CategoriaTipoUsuarioId");
-
-                    b.HasIndex("SetorUsuarioSetorId");
-
                     b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.Atendimentos", b =>
                 {
-                    b.HasOne("AtendimentoAoCliente.Modelos.Setores", "AreaAtendimento")
-                        .WithMany()
-                        .HasForeignKey("AreaAtendimentoSetorId")
+                    b.HasOne("AtendimentoAoCliente.Modelos.Clientes", "Clientes")
+                        .WithMany("Atendimento")
+                        .HasForeignKey("ClientesClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AtendimentoAoCliente.Modelos.Usuarios", "Atendente")
+                    b.HasOne("AtendimentoAoCliente.Modelos.Setores", "Setores")
                         .WithMany()
-                        .HasForeignKey("AtendenteUsuarioId");
-
-                    b.HasOne("AtendimentoAoCliente.Modelos.Clientes", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId")
+                        .HasForeignKey("SetoresSetorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AreaAtendimento");
+                    b.HasOne("AtendimentoAoCliente.Modelos.Usuarios", "Usuarios")
+                        .WithMany("Atendimentos")
+                        .HasForeignKey("UsuariosUsuarioId");
 
-                    b.Navigation("Atendente");
+                    b.Navigation("Clientes");
 
-                    b.Navigation("Cliente");
+                    b.Navigation("Setores");
+
+                    b.Navigation("Usuarios");
+                });
+
+            modelBuilder.Entity("AtendimentoAoCliente.Modelos.Clientes", b =>
+                {
+                    b.Navigation("Atendimento");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.Usuarios", b =>
                 {
-                    b.HasOne("AtendimentoAoCliente.Modelos.TipoUsuario", "Categoria")
-                        .WithMany()
-                        .HasForeignKey("CategoriaTipoUsuarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AtendimentoAoCliente.Modelos.Setores", "SetorUsuario")
-                        .WithMany()
-                        .HasForeignKey("SetorUsuarioSetorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Categoria");
-
-                    b.Navigation("SetorUsuario");
+                    b.Navigation("Atendimentos");
                 });
 #pragma warning restore 612, 618
         }

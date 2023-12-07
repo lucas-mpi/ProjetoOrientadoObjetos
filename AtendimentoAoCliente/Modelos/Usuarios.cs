@@ -10,20 +10,24 @@ namespace AtendimentoAoCliente.Modelos
 {
     internal class Usuarios
     {
-        private bool v;
-        private IQueryable<Usuarios> tipo;
-
+       
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UsuarioId { get; set; }
         public string NomeCompleto { get; set; }
         public string NomeUsuario { get; set; }
         public string Senha { get; set; }
-        public Boolean UsuarioAtivo { get; set; }
-        public TipoUsuario Categoria { get; set; }
-        public Setores SetorUsuario { get; set; }
+        public int TipoUsuarioId { get; set; }
+        public int SetorId { get; set; }
 
-        [NotMapped]
+        public Boolean UsuarioAtivo { get; set; }
+                
+
+
+        TipoUsuario TipoUsuario { get; set; }
+        Setores Setores { get; set; }
+
+
         public List<Atendimentos> Atendimentos { get; set; }
 
         
@@ -32,15 +36,15 @@ namespace AtendimentoAoCliente.Modelos
 
         }
         public Usuarios(string nomeCompleto, string nomeUsuario,
-                          string senha, Boolean usuarioAtivo, TipoUsuario categoria, Setores setorUsuario)
+                          string senha, Boolean usuarioAtivo, int tipoUsuarioId, int setorId)
         {
 
             NomeCompleto = nomeCompleto;
             NomeUsuario = nomeUsuario;
             Senha = senha;
             UsuarioAtivo = usuarioAtivo;
-            Categoria = categoria;
-            SetorUsuario = setorUsuario;
+            TipoUsuarioId = tipoUsuarioId;
+            SetorId = setorId;
 
         }
     }

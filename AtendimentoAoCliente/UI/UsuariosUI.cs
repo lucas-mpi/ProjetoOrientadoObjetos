@@ -10,9 +10,12 @@ namespace AtendimentoAoCliente.UI
 {
     internal class UsuariosUI
     {
+        UsuariosRepositorio usuario = new();
 
         public void CadastrarUsuario()
         {
+            Console.WriteLine("Cadastro de novo usuário");
+
             Console.Write("Nome completo: ");
             string nomeCompleto = Console.ReadLine();
 
@@ -23,32 +26,17 @@ namespace AtendimentoAoCliente.UI
             string senha = Console.ReadLine();
 
             Console.Write("Categoria: ");
-            string categoria = Console.ReadLine();
+            int categoria = int.Parse(Console.ReadLine());
 
             Console.Write("Setor usuário: ");
-            string setor = Console.ReadLine();
+            int setor = int.Parse(Console.ReadLine());
 
 
-            SetoresRepositorio setores = new();
+            
+            Usuarios novoUsuario = new(nomeCompleto, nomeUsuario, senha, true, categoria, setor);
 
-            Setores setorUsuario = (Setores)setores.ObtemSetorPorNome(setor);
+            usuario.AdicionarUsuarios(novoUsuario);
 
-            TipoUsuarioRepositorio tipoUsuario = new();
-
-            TipoUsuario tipo = (TipoUsuario)tipoUsuario.ObtemTipoPorNome(categoria);
-
-            var usuario = new UsuariosRepositorio();
-
-            if (setorUsuario != null)
-                if (tipo != null)
-                {
-                    Usuarios novoUsuario = new(nomeCompleto, nomeUsuario, senha, true, tipo, setorUsuario);
-                    usuario.AdicionarUsuarios(novoUsuario);
-                }
-            else
-            {
-                Console.WriteLine("Área de atendimento inválida");
-            }
         }
 
         public void EditarUsuario()
@@ -56,15 +44,26 @@ namespace AtendimentoAoCliente.UI
 
         }
 
-        public void ListarUsuario(string nome)
+        public void ListarUsuario()
         {
 
-            UsuariosRepositorio usuarios = new();
+            var usuarios = usuario.ObtemUsuarios();
+            Console.WriteLine("Usuários Cadastrados: ");
+            foreach (var usuario in usuarios)
+            {
+                Console.WriteLine($"Id: {usuario.UsuarioId}");
+                Console.WriteLine($"Nome: {usuario.NomeUsuario}");
+                Console.WriteLine("----------------------------------");
+            }
 
         }
 
         public void ExcluirUsuario()
         {
+            Console.WriteLine("Excluir Usuario");
+
+            Console.Write("Informe o Id do usuário: ");
+            int id = int.Parse(Console.ReadLine());
 
         }
 
@@ -77,9 +76,9 @@ namespace AtendimentoAoCliente.UI
 
             UsuariosRepositorio usuarios = new();
             
-            usuarios.ConfirmaCredenciais(usuario, senha);   
+            var user = usuarios.ConfirmaCredenciais(usuario, senha);
 
-            if (usuarios != null)
+            if (user != null)
             {
                 return true;
             }

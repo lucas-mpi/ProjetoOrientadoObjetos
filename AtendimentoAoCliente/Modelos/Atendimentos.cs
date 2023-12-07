@@ -15,15 +15,15 @@ namespace AtendimentoAoCliente.Modelos
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AtendimentoId { get; set; }
 
-        public Usuarios? Atendente { get; set; }
-
-        public Clientes Cliente { get; set; }
+        public int ClienteId { get; set; }
 
         public string ComentarioCliente { get; set; }
 
         public string? ComentarioAtendente { get; set; }
 
-        public Setores AreaAtendimento { get; set; }
+        public int SetorId { get; set; }
+
+        public int? UsuarioId { get; set; }
 
         public DateTime DataSolicitacao { get; set; }
 
@@ -31,16 +31,17 @@ namespace AtendimentoAoCliente.Modelos
         public String? StatusAtendimento { get;set; }
 
 
-        [NotMapped]
         public Clientes Clientes { get; set; }
+        public Setores Setores {get ; set; }
+        public Usuarios? Usuarios { get; set; }
 
         public Atendimentos() { }
-        public Atendimentos(Clientes cliente, string comentarioCliente,
-                            Setores areaAtendimento, DateTime dataSolicitacao)
+        public Atendimentos(int clienteId, string comentarioCliente,
+                            int setorId, DateTime dataSolicitacao)
         {
-            Cliente = cliente;
+            ClienteId = clienteId;
             ComentarioCliente = comentarioCliente;
-            AreaAtendimento = areaAtendimento;
+            SetorId = setorId;
             DataSolicitacao = dataSolicitacao;
         }
 

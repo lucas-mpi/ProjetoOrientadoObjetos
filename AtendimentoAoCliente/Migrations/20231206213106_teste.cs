@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AtendimentoAoCliente.Migrations
 {
-    public partial class inicial : Migration
+    public partial class teste : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -60,25 +60,13 @@ namespace AtendimentoAoCliente.Migrations
                     NomeCompleto = table.Column<string>(type: "TEXT", nullable: false),
                     NomeUsuario = table.Column<string>(type: "TEXT", nullable: false),
                     Senha = table.Column<string>(type: "TEXT", nullable: false),
-                    UsuarioAtivo = table.Column<bool>(type: "INTEGER", nullable: false),
-                    CategoriaTipoUsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
-                    SetorUsuarioSetorId = table.Column<int>(type: "INTEGER", nullable: false)
+                    TipoUsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SetorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UsuarioAtivo = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
-                    table.ForeignKey(
-                        name: "FK_Usuarios_Setores_SetorUsuarioSetorId",
-                        column: x => x.SetorUsuarioSetorId,
-                        principalTable: "Setores",
-                        principalColumn: "SetorId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Usuarios_TipoUsuarios_CategoriaTipoUsuarioId",
-                        column: x => x.CategoriaTipoUsuarioId,
-                        principalTable: "TipoUsuarios",
-                        principalColumn: "TipoUsuarioId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -87,61 +75,55 @@ namespace AtendimentoAoCliente.Migrations
                 {
                     AtendimentoId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    AtendenteUsuarioId = table.Column<int>(type: "INTEGER", nullable: true),
                     ClienteId = table.Column<int>(type: "INTEGER", nullable: false),
                     ComentarioCliente = table.Column<string>(type: "TEXT", nullable: false),
                     ComentarioAtendente = table.Column<string>(type: "TEXT", nullable: true),
-                    AreaAtendimentoSetorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SetorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
                     DataSolicitacao = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UltimaAtualizacao = table.Column<DateTime>(type: "TEXT", nullable: true),
-                    StatusAtendimento = table.Column<string>(type: "TEXT", nullable: true)
+                    StatusAtendimento = table.Column<string>(type: "TEXT", nullable: true),
+                    ClientesClienteId = table.Column<int>(type: "INTEGER", nullable: false),
+                    SetoresSetorId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UsuariosUsuarioId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Atendimentos", x => x.AtendimentoId);
                     table.ForeignKey(
-                        name: "FK_Atendimentos_Clientes_ClienteId",
-                        column: x => x.ClienteId,
+                        name: "FK_Atendimentos_Clientes_ClientesClienteId",
+                        column: x => x.ClientesClienteId,
                         principalTable: "Clientes",
                         principalColumn: "ClienteId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Atendimentos_Setores_AreaAtendimentoSetorId",
-                        column: x => x.AreaAtendimentoSetorId,
+                        name: "FK_Atendimentos_Setores_SetoresSetorId",
+                        column: x => x.SetoresSetorId,
                         principalTable: "Setores",
                         principalColumn: "SetorId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Atendimentos_Usuarios_AtendenteUsuarioId",
-                        column: x => x.AtendenteUsuarioId,
+                        name: "FK_Atendimentos_Usuarios_UsuariosUsuarioId",
+                        column: x => x.UsuariosUsuarioId,
                         principalTable: "Usuarios",
-                        principalColumn: "UsuarioId");
+                        principalColumn: "UsuarioId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Atendimentos_AreaAtendimentoSetorId",
+                name: "IX_Atendimentos_ClientesClienteId",
                 table: "Atendimentos",
-                column: "AreaAtendimentoSetorId");
+                column: "ClientesClienteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Atendimentos_AtendenteUsuarioId",
+                name: "IX_Atendimentos_SetoresSetorId",
                 table: "Atendimentos",
-                column: "AtendenteUsuarioId");
+                column: "SetoresSetorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Atendimentos_ClienteId",
+                name: "IX_Atendimentos_UsuariosUsuarioId",
                 table: "Atendimentos",
-                column: "ClienteId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_CategoriaTipoUsuarioId",
-                table: "Usuarios",
-                column: "CategoriaTipoUsuarioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_SetorUsuarioSetorId",
-                table: "Usuarios",
-                column: "SetorUsuarioSetorId");
+                column: "UsuariosUsuarioId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -150,16 +132,16 @@ namespace AtendimentoAoCliente.Migrations
                 name: "Atendimentos");
 
             migrationBuilder.DropTable(
-                name: "Clientes");
+                name: "TipoUsuarios");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Clientes");
 
             migrationBuilder.DropTable(
                 name: "Setores");
 
             migrationBuilder.DropTable(
-                name: "TipoUsuarios");
+                name: "Usuarios");
         }
     }
 }

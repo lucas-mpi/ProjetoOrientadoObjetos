@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+IRsaipo2Ta4dvi9u/5RL7Ey+LpxKbqR4ojEjNXOv11EpP5x3+oUxLGDMyYWg8O9eTrYUF/66XKUYf8Hqs/r7Q==",
+  "dgSpecHash": "iwTPmNds94/3RgRCi63Q5ixw6DRpt04ola7m3Eq/ws5oSYJKEcZnFGmPCIbFaEOws7aoffMZp4EIdktN9p/HAQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\AtendimentoAoCliente\\AtendimentoAoCliente.csproj",
+  "projectFilePath": "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\ProjetoOrientadoObjetos\\AtendimentoAoCliente\\AtendimentoAoCliente.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\lucas\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.0\\microsoft.data.sqlite.core.6.0.0.nupkg.sha512",

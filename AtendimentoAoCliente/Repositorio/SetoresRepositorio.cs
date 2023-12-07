@@ -23,11 +23,19 @@ namespace AtendimentoAoCliente.Repositorio
             _context.SaveChanges();
         }
 
-        public void EditarSetorPorId(Setores setorAtualizado)
+        public void EditarSetor(string descricao, int id)
         {
-            _context.Setores.Update(setorAtualizado);
+            var setor = _context.Setores.Find(id);
+            setor.Descricao = descricao;
+            _context.SaveChanges();
         }
 
+        public void DeletarSetor(int id)
+        {
+            var setor = _context.Setores.Find(id);
+            _context.Setores.Remove(setor);
+            _context.SaveChanges();
+        }
         public IQueryable<Setores> ObtemSetores()
         {
             return _context.Setores;

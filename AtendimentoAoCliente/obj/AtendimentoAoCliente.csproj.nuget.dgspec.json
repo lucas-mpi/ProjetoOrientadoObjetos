@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\AtendimentoAoCliente\\AtendimentoAoCliente.csproj": {}
+    "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\ProjetoOrientadoObjetos\\AtendimentoAoCliente\\AtendimentoAoCliente.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\AtendimentoAoCliente\\AtendimentoAoCliente.csproj": {
+    "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\ProjetoOrientadoObjetos\\AtendimentoAoCliente\\AtendimentoAoCliente.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\AtendimentoAoCliente\\AtendimentoAoCliente.csproj",
+        "projectUniqueName": "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\ProjetoOrientadoObjetos\\AtendimentoAoCliente\\AtendimentoAoCliente.csproj",
         "projectName": "AtendimentoAoCliente",
-        "projectPath": "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\AtendimentoAoCliente\\AtendimentoAoCliente.csproj",
+        "projectPath": "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\ProjetoOrientadoObjetos\\AtendimentoAoCliente\\AtendimentoAoCliente.csproj",
         "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\AtendimentoAoCliente\\obj\\",
+        "outputPath": "C:\\Users\\lucas\\Meu Drive\\Materias\\3_POO\\ProjetoFinal\\ProjetoOrientadoObjetos\\AtendimentoAoCliente\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

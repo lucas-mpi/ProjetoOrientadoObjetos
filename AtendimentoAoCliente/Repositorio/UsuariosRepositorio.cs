@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AtendimentoAoCliente.UI;
 
 namespace AtendimentoAoCliente.Repositorio
 {
@@ -17,9 +18,9 @@ namespace AtendimentoAoCliente.Repositorio
             _context = new AtendimentoDbContext();
         }
 
-        public IQueryable<Usuarios> ObtemUsuarios(string nomeUsuario)
+        public IQueryable<Usuarios> ObtemUsuarios()
         {
-            return _context.Usuarios.Where( u => u.NomeUsuario == nomeUsuario);
+            return _context.Usuarios;
         }
 
         public IQueryable<Usuarios> ObtemUsuariosPorId(int id)
@@ -37,7 +38,7 @@ namespace AtendimentoAoCliente.Repositorio
         {
 
             return _context.Usuarios.Where(u => u.NomeUsuario == usuario && u.Senha == senha);
-
+            
         }
 
         

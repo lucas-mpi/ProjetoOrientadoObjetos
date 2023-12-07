@@ -19,7 +19,7 @@ namespace AtendimentoAoCliente.Modelos
         public string Cpf { get; set; }
         public string Telefone { get; set; }
 
-        [NotMapped]
+
         public List<Atendimentos> Atendimento { get; set; }
 
         
