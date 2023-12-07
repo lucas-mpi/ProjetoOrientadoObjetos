@@ -36,7 +36,6 @@ namespace AtendimentoAoCliente
                             case 1:
                                 Console.Clear();
                                 MenuCliente();
-
                                 break;
 
                             case 2:
@@ -47,7 +46,8 @@ namespace AtendimentoAoCliente
                             case 0:
                                 Console.Clear();
                                 Console.WriteLine("Saindo...");
-                                break;
+                                return;
+
                             default:
                                 Console.WriteLine("Opção inválida");
                                 break;
@@ -68,7 +68,6 @@ namespace AtendimentoAoCliente
                 }
 
             }
-
 
             void MenuCliente()
             {
