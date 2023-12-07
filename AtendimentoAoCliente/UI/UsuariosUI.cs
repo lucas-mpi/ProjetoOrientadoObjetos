@@ -11,6 +11,8 @@ namespace AtendimentoAoCliente.UI
     internal class UsuariosUI
     {
         UsuariosRepositorio usuario = new();
+        TipoUsuarioUI tipoUsuario = new();
+        SetoresUI setores = new();
 
         public void CadastrarUsuario()
         {
@@ -25,9 +27,16 @@ namespace AtendimentoAoCliente.UI
             Console.Write("Senha: ");
             string senha = Console.ReadLine();
 
+            Console.WriteLine();
+
+            tipoUsuario.ListarTipoUsuario();
             Console.Write("Categoria: ");
             int categoria = int.Parse(Console.ReadLine());
 
+
+            Console.WriteLine();
+
+            setores.ListarSetor();
             Console.Write("Setor usuário: ");
             int setor = int.Parse(Console.ReadLine());
 

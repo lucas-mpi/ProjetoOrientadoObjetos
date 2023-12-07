@@ -27,6 +27,7 @@ namespace AtendimentoAoCliente.UI
 
         public void EditarTipoUsuario()
         {
+            ListarTipoUsuario();
             Console.WriteLine("Editar Usuario: ");
             Console.Write("Informe o Id do tipo do usuaário: ");
             int id = int.Parse(Console.ReadLine());
@@ -59,6 +60,7 @@ namespace AtendimentoAoCliente.UI
 
         public void ExcluirTipoUsuario()
         {
+            ListarTipoUsuario();
             Console.WriteLine("Excluir tipo de usuário");
             Console.Write("Informe o Id do tipo a ser excluído: ");
             

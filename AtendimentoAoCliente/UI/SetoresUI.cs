@@ -29,6 +29,8 @@ namespace AtendimentoAoCliente.UI
         public void EditarSetor()
         {
 
+            ListarSetor();
+
             Console.Write("Informe o Id do setor a ser editado: ");
             int id = int.Parse(Console.ReadLine());
 
@@ -54,6 +56,8 @@ namespace AtendimentoAoCliente.UI
 
         public void ExcluirSetor()
         {
+            ListarSetor();
+
             Console.Write("Informe o Id do setor a ser excluído: ");
             int id = int.Parse(Console.ReadLine());
 

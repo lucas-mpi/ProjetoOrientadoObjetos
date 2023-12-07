@@ -14,89 +14,122 @@ namespace AtendimentoAoCliente
 
             void MenuPrincipal()
             {
-                int opcaoPrincipal;
-                do
+                bool operacaoBemSucedida = false;
+                while (!operacaoBemSucedida)
                 {
-                    Console.WriteLine("Console Principal");
-                    Console.WriteLine();
-                    Console.WriteLine("Informe uma opção no menu: ");
-                    Console.WriteLine("1 - Área do cliente");
-                    Console.WriteLine("2 - Área do suporte");
-                    Console.WriteLine("0 - Encerrar.");
-
-                    opcaoPrincipal = int.Parse(Console.ReadLine());
-
-                    switch (opcaoPrincipal)
+                    try
                     {
-                        case 1:
-                            Console.Clear();
-                            MenuCliente();
-                            
-                            break;
+                        int opcaoPrincipal;
 
-                        case 2:
-                            Console.Clear();
-                            MenuSuporte();
-                            
-                            break;
 
-                        default:
-                            Console.WriteLine("Opção inválida");
-                            break;
+                        Console.WriteLine("Console Principal");
+                        Console.WriteLine();
+                        Console.WriteLine("Informe uma opção no menu: ");
+                        Console.WriteLine("1 - Área do cliente");
+                        Console.WriteLine("2 - Área do suporte");
+                        Console.WriteLine("0 - Encerrar.");
 
+                        opcaoPrincipal = int.Parse(Console.ReadLine());
+
+                        switch (opcaoPrincipal)
+                        {
+                            case 1:
+                                Console.Clear();
+                                MenuCliente();
+
+                                break;
+
+                            case 2:
+                                Console.Clear();
+                                MenuSuporte();
+                                break;
+
+                            case 0:
+                                Console.Clear();
+                                Console.WriteLine("Saindo...");
+                                break;
+                            default:
+                                Console.WriteLine("Opção inválida");
+                                break;
+
+
+                        }
+
+                        operacaoBemSucedida = true;
 
                     }
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Ocorreu um problema: {ex.Message}");
+                        Console.WriteLine("Tente novamente.");
+                        Console.WriteLine();
+                    }
+                }
 
-                } while (opcaoPrincipal != 0);
             }
 
+            
             void MenuCliente()
             {
-                int subMenu;
-
-                do
+                bool operacaoBemSucedida = false;
+                while (!operacaoBemSucedida)
                 {
-                    Console.WriteLine("Área do Cliente");
-                    Console.WriteLine();
-                    Console.WriteLine("Informe uma opção:");
-                    Console.WriteLine("1 - Registrar Solicitação");
-                    Console.WriteLine("2 - Consultar Solicitações");
-                    Console.WriteLine("0 - Retornar Ao Menu Principal");
-
-                    subMenu = int.Parse(Console.ReadLine());
-
-                    AtendimentosUI atendimento = new();
-
-                    switch (subMenu)
+                    try
                     {
-                        case 1:
-                            Console.Clear();
-                            atendimento.CadastrarAtendimento();
-                            
-                            break;
+                        int subMenu;
 
-                        case 2:
-                            Console.Clear();
-                            atendimento.ListarAtendimentoClientes();
-                            
-                            break;
+                            Console.WriteLine("Área do Cliente");
+                            Console.WriteLine();
+                            Console.WriteLine("Informe uma opção:");
+                            Console.WriteLine("1 - Registrar Solicitação");
+                            Console.WriteLine("2 - Consultar Solicitações");
+                            Console.WriteLine("0 - Retornar Ao Menu Principal");
 
-                        case 0:
-                            Console.Clear();
-                            MenuPrincipal();
-                            
-                            break;
+                            subMenu = int.Parse(Console.ReadLine());
 
-                        default:
-                            Console.WriteLine("Opção inválida");
-                            break;
+                            AtendimentosUI atendimento = new();
 
+                            switch (subMenu)
+                            {
+                                case 1:
+                                    Console.Clear();
+                                    atendimento.CadastrarAtendimento();
+
+                                    break;
+
+                                case 2:
+                                    Console.Clear();
+                                    atendimento.ListarAtendimentoClientes();
+
+                                    break;
+
+                                case 0:
+                                    Console.Clear();
+                                    MenuPrincipal();
+
+                                    break;
+
+                                default:
+                                    Console.WriteLine("Opção inválida");
+                                    break;
+
+                            }
                     }
-                } while (subMenu != 0);
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Ocorreu um problema: {ex.Message}");
+                        Console.WriteLine("Tente novamente.");
+                        Console.WriteLine();
+                    }
 
+                }
+                
+                
             }
 
-            //void LoginUsuario()
+            void LoginUsuario()
             {
                 Console.WriteLine("Login do usuário: ");
 
@@ -124,316 +157,469 @@ namespace AtendimentoAoCliente
 
             void MenuSuporte()
             {
-
-                int opcaoSuporte;
-
-                do
+                bool operacaoBemSucedida = false;
+                while (!operacaoBemSucedida)
                 {
-                    Console.WriteLine("Área do Suporte");
-                    Console.WriteLine();
-                    Console.WriteLine("Informe uma opção:");
-                    Console.WriteLine("1 - Visualizar Solicitações abertas");
-                    Console.WriteLine("2 - Visualizar Solicitações Encerradas");
-                    Console.WriteLine("3 - Começar um atendimento");
-                    Console.WriteLine("4 - Painel do Administrador");
-                    Console.WriteLine("0 - Retornar Ao Menu Anterior");
-
-                    opcaoSuporte = int.Parse(Console.ReadLine());
-
-                    AtendimentosUI atendimento = new();
-                    
-                    switch (opcaoSuporte)
+                    try
                     {
-                        case 1:
-                            Console.Clear();
-                            atendimento.ListarAtendimentosAbertos();
-                            break;
+                        int opcaoSuporte;
 
-                        case 2:
-                            Console.Clear();
-                            atendimento.ListarAtendimentosFechados();
-                            break;
+                            Console.WriteLine("Área do Suporte");
+                            Console.WriteLine();
+                            Console.WriteLine("Informe uma opção:");
+                            Console.WriteLine("1 - Atendimentos");
+                            Console.WriteLine("2 - Painel do Administrador");
+                            Console.WriteLine("0 - Retornar Ao Menu Anterior");
 
-                        case 3:
-                            Console.Clear();
-                            atendimento.AtribuirAtendimento();
-                            break;
+                            opcaoSuporte = int.Parse(Console.ReadLine());
 
-                        case 4:
-                            Console.Clear();
-                            PainelAdministrador();
-                            break;
+                            switch (opcaoSuporte)
+                            {
+                                case 1:
+                                    Console.Clear();
+                                    PainelAtendimentos();
+                                    break;
 
+                                case 2:
+                                    Console.Clear();
+                                    PainelAdministrador();
+                                    break;
 
-                        case 0:
-                            Console.Clear();
-                            MenuPrincipal();
-                            break;
+                                case 0:
+                                    Console.Clear();
+                                    MenuPrincipal();
+                                    break;
 
-                        default:
-                            throw new Exception("Opção incorreta!");
+                                default:
+                                    throw new Exception("Opção incorreta!");
 
+                            }
                     }
-                } while (opcaoSuporte != 0);
+
+
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Ocorreu um problema: {ex.Message}");
+                        Console.WriteLine("Tente novamente.");
+                        Console.WriteLine();
+                    }
+
+                }
+                
             }
 
             void PainelAdministrador()
             {
-                int opcaoAdministrador;
-
-                do
+                bool operacaoBemSucedida = false;
+                while (!operacaoBemSucedida)
                 {
-                    Console.WriteLine("Painel Adminstrador");
-                    Console.WriteLine();
-                    Console.WriteLine("Informe uma opção:");
-                    Console.WriteLine("1 - Setores");
-                    Console.WriteLine("2 - Tipos de Usuário");
-                    Console.WriteLine("3 - Usuários");
-                    Console.WriteLine("4 - Clientes");
-
-                    Console.WriteLine("0 - Retornar Ao Menu Anterior");
-
-                    opcaoAdministrador = int.Parse(Console.ReadLine());
-
-                    switch (opcaoAdministrador)
+                    try
                     {
-                        case 1:
-                            PainelSetores();
-                            break;
+                        int opcaoAdministrador;
 
-                        case 2:
-                            PainelTiposUsuario();
-                            break;
-                        case 3:
-                            PainelUsuario();
-                            break;
+                            Console.WriteLine("Painel Adminstrador");
+                            Console.WriteLine();
+                            Console.WriteLine("Informe uma opção:");
+                            Console.WriteLine("1 - Setores");
+                            Console.WriteLine("2 - Tipos de Usuário");
+                            Console.WriteLine("3 - Usuários");
+                            Console.WriteLine("4 - Clientes");
 
-                        case 4:
-                            PainelClientes();
-                            break;
+                            Console.WriteLine("0 - Retornar Ao Menu Anterior");
+
+                            opcaoAdministrador = int.Parse(Console.ReadLine());
+
+                            switch (opcaoAdministrador)
+                            {
+                                case 1:
+                                Console.Clear();
+                                PainelSetores();
+                                    break;
+
+                                case 2:
+                                Console.Clear();
+                                PainelTiposUsuario();
+                                    break;
+                                case 3:
+                                Console.Clear();
+                                PainelUsuario();
+                                    break;
+
+                                case 4:
+                                Console.Clear();
+                                PainelClientes();
+                                    break;
 
 
-                        case 0:
-                            MenuSuporte();
-                            break;
+                                case 0:
+                                Console.Clear();
+                                MenuSuporte();
+                                    break;
 
-                        default:
-                            throw new Exception("Opção incorreta!");
+                                default:
+                                    throw new Exception("Opção incorreta!");
+
+                            }
 
                     }
-                } while (opcaoAdministrador != 0);
+
+
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Ocorreu um problema: {ex.Message}");
+                        Console.WriteLine("Tente novamente.");
+                        Console.WriteLine();
+                    }
+
+                }
+                
 
             }
 
             void PainelSetores()
             {
-                SetoresUI setor = new();
-
-                int opcaoSetor;
-
-                do
+                bool operacaoBemSucedida = false;
+                while (!operacaoBemSucedida)
                 {
-                    Console.WriteLine("Painel Setores");
-                    Console.WriteLine();
-                    Console.WriteLine("Informe uma opção:");
-                    Console.WriteLine("1 - Cadastrar Setor");
-                    Console.WriteLine("2 - Listar Setor");
-                    Console.WriteLine("3 - Editar Setor");
-                    Console.WriteLine("4 - Excluir Setor");
-                    Console.WriteLine("0 - Retornar Ao Menu Principal");
-
-                    opcaoSetor = int.Parse(Console.ReadLine());
-
-
-                    switch (opcaoSetor)
+                    try
                     {
-                        case 1:
-                            Console.Clear();
-                            setor.CadastrarSetor();
-                            break;
+                        SetoresUI setor = new();
 
-                        case 2:
-                            Console.Clear();
-                            setor.ListarSetor();
-                            break;
+                        int opcaoSetor;
 
-                        case 3:
-                            Console.Clear();
-                            setor.EditarSetor();
-                            break;
+                            Console.WriteLine("Painel Setores");
+                            Console.WriteLine();
+                            Console.WriteLine("Informe uma opção:");
+                            Console.WriteLine("1 - Cadastrar Setor");
+                            Console.WriteLine("2 - Listar Setor");
+                            Console.WriteLine("3 - Editar Setor");
+                            Console.WriteLine("4 - Excluir Setor");
+                            Console.WriteLine("0 - Retornar Ao Menu Principal");
 
-                        case 4:
-                            Console.Clear();
-                            setor.ExcluirSetor();
-                            break;
+                            opcaoSetor = int.Parse(Console.ReadLine());
 
-                        case 0:
-                            Console.Clear();
-                            PainelAdministrador();
-                            break;
 
-                        default:
-                            throw new Exception("Opção incorreta!");
+                            switch (opcaoSetor)
+                            {
+                                case 1:
+                                    Console.Clear();
+                                    setor.CadastrarSetor();
+                                    break;
 
+                                case 2:
+                                    Console.Clear();
+                                    setor.ListarSetor();
+                                    break;
+
+                                case 3:
+                                    
+                                    Console.Clear();
+                                    setor.EditarSetor();
+                                    break;
+
+                                case 4:
+                                    Console.Clear();
+                                    setor.ExcluirSetor();
+                                    break;
+
+                                case 0:
+                                    Console.Clear();
+                                    PainelAdministrador();
+                                    break;
+
+                                default:
+                                    throw new Exception("Opção incorreta!");
+
+                            }
                     }
-                } while (opcaoSetor != 0);
+
+
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Ocorreu um problema: {ex.Message}");
+                        Console.WriteLine("Tente novamente.");
+                        Console.WriteLine();
+                    }
+
+                }
+                
             }
 
             void PainelTiposUsuario()
             {
-                TipoUsuarioUI tipoUsuario = new();
-
-                int opcaoTipoUsuario;
-
-                do
+                bool operacaoBemSucedida = false;
+                while (!operacaoBemSucedida)
                 {
-                    Console.WriteLine("Painel Setores");
-                    Console.WriteLine();
-                    Console.WriteLine("Informe uma opção:");
-                    Console.WriteLine("1 - Cadastrar Setor");
-                    Console.WriteLine("2 - Listar Setor");
-                    Console.WriteLine("3 - Editar Setor");
-                    Console.WriteLine("4 - Excluir Setor");
-                    Console.WriteLine("0 - Retornar Ao Menu Anterior");
-
-                    opcaoTipoUsuario = int.Parse(Console.ReadLine());
-
-
-                    switch (opcaoTipoUsuario)
+                    try
                     {
-                        case 1:
-                            Console.Clear();
-                            tipoUsuario.CadastrarTipoUsuario();
-                            break;
+                        TipoUsuarioUI tipoUsuario = new();
 
-                        case 2:
-                            Console.Clear();
-                            tipoUsuario.ListarTipoUsuario();
-                            break;
+                        int opcaoTipoUsuario;
 
-                        case 3:
-                            Console.Clear();
-                            tipoUsuario.EditarTipoUsuario();
-                            break;
+                            Console.WriteLine("Painel Setores");
+                            Console.WriteLine();
+                            Console.WriteLine("Informe uma opção:");
+                            Console.WriteLine("1 - Cadastrar Setor");
+                            Console.WriteLine("2 - Listar Setor");
+                            Console.WriteLine("3 - Editar Setor");
+                            Console.WriteLine("4 - Excluir Setor");
+                            Console.WriteLine("0 - Retornar Ao Menu Anterior");
 
-                        case 4:
-                            Console.Clear();
-                            tipoUsuario.ExcluirTipoUsuario();
-                            break;
+                            opcaoTipoUsuario = int.Parse(Console.ReadLine());
 
-                        case 0:
-                            Console.Clear();
-                            PainelAdministrador();
-                            break;
 
-                        default:
-                            throw new Exception("Opção incorreta!");
+                            switch (opcaoTipoUsuario)
+                            {
+                                case 1:
+                                    Console.Clear();
+                                    tipoUsuario.CadastrarTipoUsuario();
+                                    break;
 
+                                case 2:
+                                    Console.Clear();
+                                    tipoUsuario.ListarTipoUsuario();
+                                    break;
+
+                                case 3:
+                                    Console.Clear();
+                                    tipoUsuario.EditarTipoUsuario();
+                                    break;
+
+                                case 4:
+                                    Console.Clear();
+                                    tipoUsuario.ExcluirTipoUsuario();
+                                    break;
+
+                                case 0:
+                                    Console.Clear();
+                                    PainelAdministrador();
+                                    break;
+
+                                default:
+                                    throw new Exception("Opção incorreta!");
+
+                            }
                     }
-                } while (opcaoTipoUsuario != 0);
+
+
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Ocorreu um problema: {ex.Message}");
+                        Console.WriteLine("Tente novamente.");
+                        Console.WriteLine();
+                    }
+
+                }
+                
 
             }
 
             void PainelUsuario()
             {
-                UsuariosUI usuario = new();
-
-                int opcaoUsuario;
-
-                do
+                bool operacaoBemSucedida = false;
+                while (!operacaoBemSucedida)
                 {
-                    Console.WriteLine("Painel Usuários");
-                    Console.WriteLine();
-                    Console.WriteLine("Informe uma opção:");
-                    Console.WriteLine("1 - Cadastrar Usuário");
-                    Console.WriteLine("2 - Listar Usuário");
-                    Console.WriteLine("3 - Editar Usuário");
-                    Console.WriteLine("4 - Excluir Usuário");
-                    Console.WriteLine("0 - Retornar Ao Menu Anterior");
-
-                    opcaoUsuario = int.Parse(Console.ReadLine());
-
-
-                    switch (opcaoUsuario)
+                    try
                     {
-                        case 1:
-                            Console.Clear();
-                            usuario.CadastrarUsuario();
-                            break;
+                        UsuariosUI usuario = new();
 
-                        case 2:
-                            Console.Clear();
-                            usuario.ListarUsuario();
-                            break;
+                        int opcaoUsuario;
 
-                        case 3:
-                            Console.Clear();
-                            usuario.EditarUsuario();
-                            break;
+                        
+                            Console.WriteLine("Painel Usuários");
+                            Console.WriteLine();
+                            Console.WriteLine("Informe uma opção:");
+                            Console.WriteLine("1 - Cadastrar Usuário");
+                            Console.WriteLine("2 - Listar Usuário");
+                            Console.WriteLine("3 - Editar Usuário");
+                            Console.WriteLine("4 - Excluir Usuário");
+                            Console.WriteLine("0 - Retornar Ao Menu Anterior");
 
-                        case 4:
-                            Console.Clear();
-                            usuario.ExcluirUsuario();
-                            break;
+                            opcaoUsuario = int.Parse(Console.ReadLine());
 
-                        case 0:
-                            Console.Clear();
-                            PainelAdministrador();
-                            break;
 
-                        default:
-                            throw new Exception("Opção incorreta!");
+                            switch (opcaoUsuario)
+                            {
+                                case 1:
+                                    Console.Clear();
+                                    usuario.CadastrarUsuario();
+                                    break;
 
+                                case 2:
+                                    Console.Clear();
+                                    usuario.ListarUsuario();
+                                    break;
+
+                                case 3:
+                                    Console.Clear();
+                                    usuario.EditarUsuario();
+                                    break;
+
+                                case 4:
+                                    Console.Clear();
+                                    usuario.ExcluirUsuario();
+                                    break;
+
+                                case 0:
+                                    Console.Clear();
+                                    PainelAdministrador();
+                                    break;
+
+                                default:
+                                    throw new Exception("Opção incorreta!");
+
+                            }
                     }
-                } while (opcaoUsuario != 0);
+
+
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Ocorreu um problema: {ex.Message}");
+                        Console.WriteLine("Tente novamente.");
+                        Console.WriteLine();
+                    }
+
+                }
+                
 
             }
 
             void PainelClientes()
             {
-                ClientesUI cliente = new();
 
-                int opcaoCliente;
-
-                do
+                bool operacaoBemSucedida = false;
+                while (!operacaoBemSucedida)
                 {
-                    Console.WriteLine("Painel Clientes");
-                    Console.WriteLine();
-                    Console.WriteLine("Informe uma opção:");
-                    Console.WriteLine("1 - Listar Clientes");
-                    Console.WriteLine("2 - Editar Clientes");
-                    Console.WriteLine("3 - Excluir Clientes");
-                    Console.WriteLine("0 - Retornar Ao Menu Anterior");
-
-                    opcaoCliente = int.Parse(Console.ReadLine());
-
-
-                    switch (opcaoCliente)
+                    try
                     {
-                        case 1:
-                            Console.Clear();
-                            cliente.ListarCliente();
-                            break;
+                        ClientesUI cliente = new();
 
-                        case 2:
-                            Console.Clear();
-                            break;
+                        int opcaoCliente;
 
-                        case 3:
-                            Console.Clear();
-                            cliente.DeletarCliente();
-                            break;
+                            Console.WriteLine("Painel Clientes");
+                            Console.WriteLine();
+                            Console.WriteLine("Informe uma opção:");
+                            Console.WriteLine("1 - Listar Clientes");
+                            Console.WriteLine("2 - Editar Clientes");
+                            Console.WriteLine("3 - Excluir Clientes");
+                            Console.WriteLine("0 - Retornar Ao Menu Anterior");
 
-                        case 0:
-                            Console.Clear();
-                            PainelAdministrador();
-                            break;
+                            opcaoCliente = int.Parse(Console.ReadLine());
 
-                        default:
-                            throw new Exception("Opção incorreta!");
 
+                            switch (opcaoCliente)
+                            {
+                                case 1:
+                                    Console.Clear();
+                                    cliente.ListarCliente();
+                                    break;
+
+                                case 2:
+                                    Console.Clear();
+                                    break;
+
+                                case 3:
+                                    Console.Clear();
+                                    cliente.DeletarCliente();
+                                    break;
+
+                                case 0:
+                                    Console.Clear();
+                                    PainelAdministrador();
+                                    break;
+
+                                default:
+                                    throw new Exception("Opção incorreta!");
+
+                            }
                     }
-                } while (opcaoCliente != 0);
+
+
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Ocorreu um problema: {ex.Message}");
+                        Console.WriteLine("Tente novamente.");
+                        Console.WriteLine();
+                    }
+
+                }
+               
+
+            }
+
+            void PainelAtendimentos()
+            {
+                bool operacaoBemSucedida = false;
+                while (!operacaoBemSucedida)
+                {
+                    try
+                    {
+                        int opcaoSuporte;
+
+                            Console.WriteLine("Área do Suporte");
+                            Console.WriteLine();
+                            Console.WriteLine("Informe uma opção:");
+                            Console.WriteLine("1 - Visualizar Solicitações abertas");
+                            Console.WriteLine("2 - Visualizar Solicitações Encerradas");
+                            Console.WriteLine("3 - Começar um atendimento");
+                            Console.WriteLine("4 - Painel do Administrador");
+                            Console.WriteLine("0 - Retornar Ao Menu Anterior");
+
+                            opcaoSuporte = int.Parse(Console.ReadLine());
+
+                            AtendimentosUI atendimento = new();
+
+                            switch (opcaoSuporte)
+                            {
+                                case 1:
+                                    Console.Clear();
+                                    atendimento.ListarAtendimentosAbertos();
+                                    break;
+
+                                case 2:
+                                    Console.Clear();
+                                    atendimento.ListarAtendimentosFechados();
+                                    break;
+
+                                case 3:
+                                    Console.Clear();
+                                    atendimento.AtribuirAtendimento();
+                                    break;
+
+                                case 4:
+                                    Console.Clear();
+                                    PainelAdministrador();
+                                    break;
+
+
+                                case 0:
+                                    Console.Clear();
+                                    MenuPrincipal();
+                                    break;
+
+                                default:
+                                    throw new Exception("Opção incorreta!");
+
+                            }
+                    }
+
+
+                    catch (Exception ex)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($"Ocorreu um problema: {ex.Message}");
+                        Console.WriteLine("Tente novamente.");
+                        Console.WriteLine();
+                    }
+
+                }
+                
 
             }
         }
