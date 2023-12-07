@@ -15,20 +15,21 @@ namespace AtendimentoAoCliente.Modelos
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AtendimentoId { get; set; }
 
-        public int ClienteId { get; set; }
+        public int ClientesClienteId { get; set; }
 
         public string ComentarioCliente { get; set; }
 
         public string? ComentarioAtendente { get; set; }
 
-        public int SetorId { get; set; }
+        public int SetoresSetorId { get; set; }
 
-        public int? UsuarioId { get; set; }
+        public int? UsuariosUsuarioId { get; set; }
 
         public DateTime DataSolicitacao { get; set; }
 
         public DateTime? UltimaAtualizacao { get; set; }
         public String? StatusAtendimento { get;set; }
+
 
 
         public Clientes Clientes { get; set; }
@@ -39,9 +40,9 @@ namespace AtendimentoAoCliente.Modelos
         public Atendimentos(int clienteId, string comentarioCliente,
                             int setorId, DateTime dataSolicitacao)
         {
-            ClienteId = clienteId;
+            ClientesClienteId = clienteId;
             ComentarioCliente = comentarioCliente;
-            SetorId = setorId;
+            SetoresSetorId = setorId;
             DataSolicitacao = dataSolicitacao;
         }
 

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AtendimentoAoCliente.Migrations
 {
     [DbContext(typeof(AtendimentoDbContext))]
-    [Migration("20231206231851_Atualizando_campoUsuarios_podeSerNull")]
-    partial class Atualizando_campoUsuarios_podeSerNull
+    [Migration("20231207054054_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,9 +23,6 @@ namespace AtendimentoAoCliente.Migrations
                 {
                     b.Property<int>("AtendimentoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ClienteId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("ClientesClienteId")
@@ -41,9 +38,6 @@ namespace AtendimentoAoCliente.Migrations
                     b.Property<DateTime>("DataSolicitacao")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SetorId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("SetoresSetorId")
                         .HasColumnType("INTEGER");
 
@@ -52,9 +46,6 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.Property<DateTime?>("UltimaAtualizacao")
                         .HasColumnType("TEXT");
-
-                    b.Property<int?>("UsuarioId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("UsuariosUsuarioId")
                         .HasColumnType("INTEGER");

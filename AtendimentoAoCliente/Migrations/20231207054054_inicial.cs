@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AtendimentoAoCliente.Migrations
 {
-    public partial class teste : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,17 +75,14 @@ namespace AtendimentoAoCliente.Migrations
                 {
                     AtendimentoId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    ClienteId = table.Column<int>(type: "INTEGER", nullable: false),
                     ComentarioCliente = table.Column<string>(type: "TEXT", nullable: false),
                     ComentarioAtendente = table.Column<string>(type: "TEXT", nullable: true),
-                    SetorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
                     DataSolicitacao = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UltimaAtualizacao = table.Column<DateTime>(type: "TEXT", nullable: true),
                     StatusAtendimento = table.Column<string>(type: "TEXT", nullable: true),
                     ClientesClienteId = table.Column<int>(type: "INTEGER", nullable: false),
                     SetoresSetorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    UsuariosUsuarioId = table.Column<int>(type: "INTEGER", nullable: false)
+                    UsuariosUsuarioId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -95,19 +92,18 @@ namespace AtendimentoAoCliente.Migrations
                         column: x => x.ClientesClienteId,
                         principalTable: "Clientes",
                         principalColumn: "ClienteId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Atendimentos_Setores_SetoresSetorId",
                         column: x => x.SetoresSetorId,
                         principalTable: "Setores",
                         principalColumn: "SetorId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Atendimentos_Usuarios_UsuariosUsuarioId",
                         column: x => x.UsuariosUsuarioId,
                         principalTable: "Usuarios",
-                        principalColumn: "UsuarioId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "UsuarioId");
                 });
 
             migrationBuilder.CreateIndex(

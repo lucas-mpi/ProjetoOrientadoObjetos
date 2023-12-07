@@ -23,9 +23,6 @@ namespace AtendimentoAoCliente.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("ClientesClienteId")
                         .HasColumnType("INTEGER");
 
@@ -39,9 +36,6 @@ namespace AtendimentoAoCliente.Migrations
                     b.Property<DateTime>("DataSolicitacao")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SetorId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("SetoresSetorId")
                         .HasColumnType("INTEGER");
 
@@ -50,9 +44,6 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.Property<DateTime?>("UltimaAtualizacao")
                         .HasColumnType("TEXT");
-
-                    b.Property<int?>("UsuarioId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("UsuariosUsuarioId")
                         .HasColumnType("INTEGER");
@@ -65,7 +56,7 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasIndex("UsuariosUsuarioId");
 
-                    b.ToTable("Atendimentos", (string)null);
+                    b.ToTable("Atendimentos");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.Clientes", b =>
@@ -92,7 +83,7 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasKey("ClienteId");
 
-                    b.ToTable("Clientes", (string)null);
+                    b.ToTable("Clientes");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.Setores", b =>
@@ -107,7 +98,7 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasKey("SetorId");
 
-                    b.ToTable("Setores", (string)null);
+                    b.ToTable("Setores");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.TipoUsuario", b =>
@@ -122,7 +113,7 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasKey("TipoUsuarioId");
 
-                    b.ToTable("TipoUsuarios", (string)null);
+                    b.ToTable("TipoUsuarios");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.Usuarios", b =>
@@ -154,7 +145,7 @@ namespace AtendimentoAoCliente.Migrations
 
                     b.HasKey("UsuarioId");
 
-                    b.ToTable("Usuarios", (string)null);
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("AtendimentoAoCliente.Modelos.Atendimentos", b =>

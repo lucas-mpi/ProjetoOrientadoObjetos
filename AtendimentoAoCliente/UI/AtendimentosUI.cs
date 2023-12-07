@@ -18,7 +18,7 @@ namespace AtendimentoAoCliente.UI
                 var dbAtendimento = new AtendimentosRepositorio();
                 var dbCliente = new ClienteRepositorio();
 
-            /*
+            
                 Console.WriteLine("Informe seus dados: ");
                 Console.Write("Nome completo: ");
                 string nomeCompleto = Console.ReadLine();
@@ -36,7 +36,8 @@ namespace AtendimentoAoCliente.UI
                 Clientes novoCliente = new(nomeCompleto, email, cpf, telefone);
 
                 dbCliente.AdicionarCliente(novoCliente);
-            */
+
+
 
                 Console.WriteLine("Informe os dados para a solicitação: ");
 
@@ -46,7 +47,7 @@ namespace AtendimentoAoCliente.UI
                 Console.Write("Mensagem para o suporte: ");
                 string mensagemSuporte = Console.ReadLine();
 
-                Atendimentos novoAtendimento = new(4, mensagemSuporte, areaAtendimento, DateTime.Now);
+                Atendimentos novoAtendimento = new(novoCliente.ClienteId, mensagemSuporte, areaAtendimento, DateTime.Now);
                                 
                 dbAtendimento.AdicionarAtendimento(novoAtendimento);
 
