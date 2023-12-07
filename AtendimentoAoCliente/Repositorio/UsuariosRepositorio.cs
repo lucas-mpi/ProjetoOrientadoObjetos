@@ -1,11 +1,6 @@
 ﻿using AtendimentoAoCliente.Modelos;
 using AtendimentoAoCliente.Contextos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AtendimentoAoCliente.UI;
+
 
 namespace AtendimentoAoCliente.Repositorio
 {

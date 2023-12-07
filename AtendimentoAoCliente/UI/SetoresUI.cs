@@ -1,17 +1,12 @@
 ﻿using AtendimentoAoCliente.Modelos;
 using AtendimentoAoCliente.Repositorio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AtendimentoAoCliente.UI
 {
     internal class SetoresUI
     {
 
-        SetoresRepositorio setor = new SetoresRepositorio();
+        readonly SetoresRepositorio setor = new();
 
         public void CadastrarSetor()
         {

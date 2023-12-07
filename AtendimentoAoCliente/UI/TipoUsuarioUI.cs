@@ -1,16 +1,12 @@
 ﻿using AtendimentoAoCliente.Modelos;
 using AtendimentoAoCliente.Repositorio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AtendimentoAoCliente.UI
 {
     internal class TipoUsuarioUI
     {
-        TipoUsuarioRepositorio tipo = new();
+        readonly TipoUsuarioRepositorio tipo = new();
 
         public void CadastrarTipoUsuario()
         {

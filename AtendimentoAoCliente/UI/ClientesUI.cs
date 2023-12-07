@@ -1,17 +1,12 @@
-﻿using AtendimentoAoCliente.Modelos;
-using AtendimentoAoCliente.Repositorio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AtendimentoAoCliente.Repositorio;
+
 
 namespace AtendimentoAoCliente.UI
 {
     internal class ClientesUI
     {
         
-        ClienteRepositorio clientes = new();
+        readonly ClienteRepositorio clientes = new();
 
         public void ListarCliente()
         {

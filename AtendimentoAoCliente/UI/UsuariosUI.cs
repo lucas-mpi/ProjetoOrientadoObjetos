@@ -1,18 +1,14 @@
 ﻿using AtendimentoAoCliente.Modelos;
 using AtendimentoAoCliente.Repositorio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AtendimentoAoCliente.UI
 {
     internal class UsuariosUI
     {
-        UsuariosRepositorio usuario = new();
-        TipoUsuarioUI tipoUsuario = new();
-        SetoresUI setores = new();
+        readonly UsuariosRepositorio usuario = new();
+        readonly TipoUsuarioUI tipoUsuario = new();
+        readonly SetoresUI setores = new();
 
         public void CadastrarUsuario()
         {
